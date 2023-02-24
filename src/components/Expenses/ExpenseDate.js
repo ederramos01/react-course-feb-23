@@ -1,6 +1,6 @@
 import './ExpenseDate.css';
 
-function ExpenseDate({item}) {
+const ExpenseDate = ({item}) => {
     return (
         <div className='expense-date'>
             <div className='expense-date__month'>{ item.date.toLocaleString('en-US', { month: 'long' }) }</div>

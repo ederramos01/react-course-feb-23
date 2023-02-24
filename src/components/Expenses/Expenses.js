@@ -1,8 +1,8 @@
 import ExpenseItem from "./ExpenseItem";
-
+import Card from '../UI/Card';
 import './Expenses.css';
 
-function Expenses() {
+const Expenses =() => {
     
     const expenses = [
         { title: 'Car Insurance', amount: 294.67, date: new Date(2023, 9, 28) },
@@ -12,7 +12,9 @@ function Expenses() {
       ];
 
     return (
-        <ExpenseItem expenses={expenses} className='expenses' />
+        <Card className='expenses'>
+            <ExpenseItem expenses={expenses} />
+        </Card>
     );
 }
 
