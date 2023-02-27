@@ -1,21 +1,30 @@
-import ExpenseItem from "./ExpenseItem";
-import Card from '../UI/Card';
-import './Expenses.css';
+import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
+import ExpensesList from "./ExpensesList";
 
-const Expenses =() => {
-    
-    const expenses = [
-        { title: 'Toilet Paper', amount: 294.67, date: new Date(2023, 9, 28) },
-        { title: 'New TV', amount: 296.30, date: new Date(2022, 5, 25) },
-        { title: 'Car Insurance', amount: 394.85, date: new Date(2023, 2, 23) },
-        { title: 'New Desk (Wooden)', amount: 654.03, date: new Date(2021, 7, 7) }
-      ];
+import "./Expenses.css";
 
-    return (
-        <Card className='expenses'>
-            <ExpenseItem expenses={expenses} />
-        </Card>
-    );
-}
+import { useState } from "react";
+
+const Expenses = ({ expenses }) => {
+  const [filteredYear, setFilteredYear] = useState("2020");
+
+  const getDateHandler = (yearSelected) => {
+    setFilteredYear(yearSelected);
+  };
+
+  const filterExpenses = expenses.filter((expense) => {
+    return expense.date.getFullYear().toString() === filteredYear;
+  });
+
+  return (
+    <>
+      <Card className="expenses">
+        <ExpensesFilter selected={filteredYear} onGetData={getDateHandler} />
+        <ExpensesList items={filterExpenses}/>
+      </Card>
+    </>
+  );
+};
 
 export default Expenses;
