@@ -22,8 +22,8 @@ const App = () =>{
   }
 
   return (
-    <div className="App">
-      <NewExpense onAddExpense={addExpenseHandler}/>
+    <div className="App">\
+      <NewExpense onAddExpense={addExpenseHandler}/>      
       <Expenses expenses={expenses} />
     </div>
   );
